@@ -1,0 +1,316 @@
+<!--Edgar Mauricio Rodriguez Rosas 
+Examen Parcial 2 
+19/09/2023-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Examen Parcial 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="ExamenP2.css">
+</head>
+<body>
+   <!-- Modal (solo ocurre en pagina princiapal) -->
+   <div id="myModal" class="modal">
+    <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <h2>Catalogo de sneakers</h2>
+        <img src="data:image/png;base64,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" alt="" class="img" >
+        <p>Las sneakers, más que simples zapatos, son una declaración de estilo, pasión y actitud. En cada par de zapatillas yace un mundo de posibilidades, un reflejo de tu personalidad y un recordatorio constante de que la moda es mucho más que prendas, es una forma de expresión.
+
+          Cada paso que das en tus sneakers te lleva más allá de lo ordinario, te impulsa a explorar, a desafiar tus límites y a abrazar la comodidad sin sacrificar el estilo
+      </div>
+</div>
+<script src="/ExamenP2.js"></script> <!-- LLamada a Js -->
+<!-- se crea el nav -->
+    <header>
+        <div class="container">
+            <p class="logo">Revista de tenis</p>
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#introduccion">introduccion</a>
+                <a href="#top">Top ventas de calzado</a>
+                <a href="#puntos">Caracteristicas sobresalientes</a>
+                <a href="#unete">Inicio de sesion</a>
+                <a href="#comentarios">Comentarios</a>
+            </nav>
+        </div>
+    </header>
+    
+<!-- Primera seccion del inicio de la pagina -->
+    <section id="inicio">
+    <h1>¡Genera tu interes por los tenis!<br></h1>
+    <!-- Aqui se controla todo el carrusel -->
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="img/jordan.png" class="d-block w-100" alt="MonoParanormal.png">
+          </div>
+          <div class="carousel-item">
+            <img src="img/Nike.jpg" class="d-block w-100" alt="MonoParanormal.png">
+          </div>
+          <div class="carousel-item">
+            <img src="img/adidas.jpeg" class="d-block w-100" alt="MonoParanormal.png">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- segunda seccion de la pagina -->
+
+    <section id="introduccion">
+        <div class="container">
+            <div class="img-container"></div>
+            <h2>De Suela a Suela:<span class="color-acento"> La Evolución del Calzado en el Tenis</span></h2>
+            <div class="texto">
+                <pre>
+    <br>    En el mundo actual, el uso de tenis de moda ha evolucionado de una elección de calzado a una declaración de estilo. <br>
+    Ya no se trata solo de comodidad,sino de expresar tu personalidad en cada paso que das. Los tenis se han convertido <br>
+    en un lienzo en blanco para la creatividad, donde las tendencias y la innovación se encuentran.
+
+    Los tenis de moda de hoy son mucho más que simples zapatos. Son una manifestación de tu actitud y tu <br>
+    pasión.
+    Son la fusión perfecta entre diseño y funcionalidad, una combinación que lleva el confort a nuevas <br>
+    alturas sin comprometer la estética.            
+    <br>    viaja a través del mundo del calzado de moda en el tenis, donde exploraremos las últimas tendencias, <br>
+    y te inspiraremos a llevar tu estilo personal a lo grande.
+                              
+    Bienvenidos a un mundo donde los tenis de moda no son solo una elección, son una forma de vida. ¡Acompáñanos!"
+                                       
+              
+    </pre>
+        </div>
+        </div>
+    </section>
+    <!-- tercera seccion  -->
+
+    <section id="top">
+        <div class="container">
+            <h2>Tenis mas vendidos de las siguientes marcas</h2>
+            <div class="programas">
+                <div class="carta"><!-- se utiliza esta funcion para separar por cuadros cada imagen -->
+                    <h3>Nike</h3>
+                    <p>fueron diseñados por Bruce Kilgore y se lanzaron como un modelo de baloncesto. Se destacaron por su suela gruesa con una unidad de aire en el talón, que proporcionaba un excelente soporte y comodidad.
+                        se convirtieron en un ícono de la cultura urbana y la moda callejera. Han sido usados por numerosos artistas, músicos y celebridades, y se han convertido en una parte fundamental del estilo de la calle.
+                    </p>
+                   <a href="https://www.nike.com/mx/w/air-force-1-calzado-5sj3yzy7ok"><button style="background-color:yellowgreen;"> +Info</button></a> 
+                </div>
+                <div class="carta">
+                    <h3>Adidas</h3>
+                    <p>  se caracterizan por su diseño clásico y atemporal. Están inspiradas en el estilo de las zapatillas de tenis, con una apariencia limpia y sencilla que las hace versátiles y adecuadas para su uso tanto en actividades deportivas como en la vida diaria.
+                        Estas zapatillas suelen estar fabricadas con materiales de alta calidad, como cuero sintético en la parte superior, que les proporciona durabilidad y resistencia al desgaste.
+        
+                    </p>
+                    <a href="https://www.adidas.mx/advantage"><button style="background-color: yellowgreen;"> +Info</button></a>
+                </div>
+                <div class="carta">
+                    <h3>Jordan</h3>
+                    <p> fue lanzado en 1985 como el primer modelo de zapatillas de baloncesto de la línea Air Jordan de Nike. Fue creado para el legendario jugador de baloncesto Michael Jordan y rápidamente se convirtió en un ícono de la cultura de las zapatillas y la moda.
+                        presentó un diseño innovador en su época, con una parte superior de cuero y una silueta de corte alto. Su aspecto distintivo y llamativo rompió con las convenciones del diseño de zapatillas de baloncesto de la época.
+                    </p>
+                   <a href="https://www.nike.com/mx/w/jordan-1-calzado-4fokyzy7ok"><button style="background-color: yellowgreen;"> +Info</button></a> 
+                </div>  
+            </div>
+    <br>
+    <hr style="color: red;">
+    <!-- Texto dentro de un fieldset -->
+    <fieldset>
+       <legend style="color: whitesmoke; font-style: 20;">Actualmente el PAR MAS CARO</legend>
+       Conocido por su diseño futurista y por su vínculo con la película "Regreso al Futuro II". Presenta una parte superior de cuero y materiales sintéticos, así como un sistema de iluminación LED en el logotipo de Nike en el talón y la suela, que imita la apariencia de las zapatillas en la película. Una de las características más destacadas del Air Mag es su sistema de cordones electrónicos conocido como "Nike Adapt". Este sistema permite que los cordones se ajusten automáticamente al pie del usuario, brindando una experiencia de calzado única y tecnológica.
+    
+       <br>
+       <br>
+       <a style="background-color: yellowgreen;" href="https://www.farfetch.com/mx/shopping/men/nike-tenis-air-mag-back-to-the-future-item-14164674.aspx?lang=es-MX&size=33&storeid=11218&utm_source=google&utm_medium=cpc&utm_keywordid=42874622&utm_shoppingproductid=14164674-33&pid=google_search&af_channel=Search&c=830370400&af_c_id=830370400&af_siteid=&af_keywords=pla-296454420700&af_adset_id=46240206167&af_ad_id=195757171897&af_sub1=42874622&af_sub5=14164674-33&is_retargeting=true&shopping=yes&gad_source=1&gclid=CjwKCAjwnOipBhBQEiwACyGLus0rGIQulCqIRG0VOrMMltgV61kkGjOhx2Xh2p3OES9DV64MMAOJLRoCuR4QAvD_BwE">Comprar!</a>
+       <img src="img/airmag.jpg" width="200" height="200">
+    </fieldset>
+        </div>
+    </section>
+
+    <!-- tercera seccion -->
+    <section id="puntos">
+        <div class="container">
+            <ul>
+                <li>Nike</li>
+                <fieldset>
+                    <legend style="color: navy;">Puntos a destacar</legend>
+                    1.Calidad y Durabilidad: Nike es conocida por la calidad de sus productos. Sus zapatillas y ropa deportiva están diseñadas para resistir el desgaste y el uso frecuente, lo que las hace duraderas a lo largo del tiempo.
+                    <br>2. Innovación Tecnológica: Nike se destaca por su constante innovación en tecnología de calzado y ropa deportiva. Sus avances en amortiguación, sujeción y materiales mejoran el rendimiento deportivo y la comodidad.
+                    <br>3.Variedad de Productos: Nike ofrece una amplia gama de productos, desde zapatillas deportivas para diferentes deportes hasta ropa deportiva, ropa casual y accesorios. Esto permite a los clientes encontrar lo que necesitan para diversas actividades.
+                    <br>4.Diseño y Estilo: Nike es reconocida por su diseño moderno y estilizado. Sus productos no solo son funcionales, sino que también se ven bien y están a la moda, lo que los hace atractivos para los consumidores.
+                    
+                    <br>
+                    <br>
+                    <div class="image-row">
+                        <img src="img/tachones.jpg" alt="Imagen 1">
+                        <img src="img/corrernike.jpg" alt="Imagen 2">
+                        <img src="img/dunk.jpg" alt="Imagen 3">
+                      </div>
+                    <br>
+                    
+
+                 </fieldset>
+                 <br>
+                <li>ADIDAS</li>
+                <fieldset>
+                    <legend style="color: purple; font-style: 20px;">Puntos a destacar</legend>
+                    1.	Estilo y Diseño Únicos: Algunas personas prefieren el estilo y diseño particular de Adidas sobre el de Nike. Adidas tiende a tener una estética distintiva que atrae a ciertos consumidores.
+                    <br>2.Adidas Originals: La línea "Adidas Originals" se centra en el estilo de vida urbano y a menudo se asocia con la cultura de la música y la moda callejera. Para quienes aprecian este estilo, Adidas puede ser la elección natural.
+                    <br>3.Enfoque en el Fútbol (Soccer): Adidas es conocida por ser una de las principales marcas de equipamiento de fútbol en el mundo. Sus productos están estrechamente ligados al fútbol y a menudo se prefieren para este deporte en particular.
+                    <br>4.Relación con Celebridades Específicas: Algunas personas pueden sentir una conexión especial con las celebridades o atletas que respaldan a Adidas, lo que influye en su elección de marca.
+
+                    <div class="image-raw">
+                        
+                        <img src="img/adidastac.jpg" alt="Imagen 2">
+                        <img src="img/forum.jpg" alt="Imagen 3">
+                        <img src="img/correradi.jpg" alt="Imagen1">
+                      </div>
+                                    
+                 </fieldset>
+                 <br>
+        
+                    <h4 style="font-size: medium;">Ubicacion de ADIDAS</h4>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59220.169132372735!2d-102.3660076513672!3d21.924532000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8429efd04ca5e6bd%3A0x5886236422df10a8!2sadidas%20Store%20Aguascalientes!5e0!3m2!1ses-419!2smx!4v1698377314860!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>              
+                 </fieldset>
+
+                 <li>Jordan </li>
+
+                 <fieldset>
+                    <legend style="color: salmon; font-style: 20px;">Puntos a destacar</legend>
+                    🔸 Diseño Icónico: Las zapatillas Air Jordan son conocidas por su diseño distintivo y estilizado, que a menudo incorpora elementos de la cultura del baloncesto y el estilo urbano. El diseño icónico de las Jordan atrae a los amantes del calzado y la moda.
+                    <br>🔸Variedad de Modelos: La marca Jordan ofrece una amplia gama de modelos de zapatillas, desde las icónicas ,esto permite a los consumidores encontrar un modelo que se adapte a su estilo y necesidades.
+                    <br>🔸Ediciones Especiales y Colaboraciones: Jordan Brand ha colaborado con celebridades y diseñadores de renombre para lanzar ediciones especiales de zapatillas, lo que agrega un elemento de exclusividad y colección a la marca.
+                    <br>🔸Cultura de la Moda y el Streetwear: Las zapatillas Jordan se han convertido en un símbolo de la cultura del streetwear y la moda urbana. Quienes valoran este estilo a menudo eligen Jordan como parte de su guardarropa.
+                    
+                    <div class="image-raw">
+                        
+                      <img src="img/jodan6.jpg" alt="Imagen 2">
+                      <img src="img/jodan4.jpg" alt="Imagen 3">
+                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDBio3827Z5L6M9RHUIzlqX6eI_GTiXusT1g&usqp=CAU" alt="Imagen1">
+                    </div>   
+                    
+                   <br><br> <table border="2px" cellspacing="5px" cellpadding="10px">
+                      <thead style="background-color: ghostwhite;">
+
+                          <tr>
+                              <th>Marca</th>
+                              <th>Nombre del par</th>
+                              <th>Precio</th>
+                            
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Nike</td>
+                              <td>nike air mag</td>
+                              <td>$847,000
+                          </tr>
+                          <tr>
+                              <td>Jordan</td>
+                              <td>Joran 1</td>
+                              <td>$3500</td>
+                             
+                          </tr>
+                          
+                          <tr>
+                              <td>Adidas</td>
+                              <td>Advantage</td>
+                              <td>$900</td>
+                             
+                          </tr>
+                      </tbody>
+                  </table>
+                 </fieldset>
+                
+            </ul>
+        </div>
+
+    </section>
+    <!-- cuarta seccion -->
+
+    <section id="unete">
+      <div id="inicio_sesion">
+        <div class="section-con-fondo">  
+          <div class="titulo">
+           <h1 style="font-size: 46px;color:#273746 ;text-align: center;">Inicio de Sesion</h1>
+          </div>
+          <div class="container text-justify d-flex justify-content-center align-items-center" >
+            <form name="loginForm" onsubmit="return validarFormulario()"><!-- LLamada a la funcion en Js -->
+           <br><label for="login">Nombre de Usuario:</label>
+              <input type="text" id="login" name="login" required><br><br>
+      
+           <label for="password">Contraseña:</label>
+              <input type="password" id="password" name="password" required><br><br>
+      
+              <input type="submit" value="Iniciar Sesión">
+          </form>
+          <p id="error" class="error-message"></p><!-- boton de validar errores -->
+          </div>
+          <script src="/ExamenP2.js"></script> <!-- LLamada a Js -->
+        </div>
+      </div>        
+    </section>
+<!-- ultima seccion -->
+    <section id="comentarios">
+      <div class="fondocom">
+        <form> 
+
+          <p style="color: #163F8C ;">¿Consideras commprar algun par?</p>
+          <input type="radio" id="si" name="respuestas" value="Si">
+          <label for="si">SI</label><br>
+          <input type="radio" id="no" name="respuestas" value="No">
+          <label for="no">NO</label><br>
+          <input type="radio" id="fal" name="respuestas" value="falto">
+          <label for="fal">Tal vez </label>
+                  
+          
+          <p style="color: #163F8C ;">Opinión de cual marca prefieres</p>
+          <label for="respuesta">Escribe tu respuesta:</label>
+          <textarea id="respuesta" name="respuesta" rows="3" cols="50"></textarea>
+  
+          <h3>Gracias por tus comentarios</h3>
+          <input type="button" style="background-color: orange;font-size: larger;"  onclick="alert('Se han enviado tus comentarios')" value="Enviar">
+  
+      </div>
+     
+
+    </section>
+    
+    <footer>
+        <div class="container">
+          <div class="footer-content">
+            <div class="contact-info">
+              <h4>Información de Contacto</h4>
+              <p><strong>Nombre:</strong> Edgar Mauricio Rodriguez Rosas</p>
+              <p><strong>Correo Electrónico:</strong> al291805@edu.uaa.mx</p>
+              <p><strong>Materia:</strong> Administracion y diseño web</p>
+              <p><strong>Instituto Universitario:</strong> Universidad Autonoma de Aguascalientes</p>
+            </div>
+            <div class="social-media">
+              <h4>Paginas oficiales de las marcas</h4>
+              <ul>
+                <li><a href="https://www.nike.com/mx/?cp=14625409597_search_%7cnike%7c20436191731%7c152540838936%7cb%7cc%7cES%7cpure%7c485443770143&gad_source=1&gclid=CjwKCAjwnOipBhBQEiwACyGLuiDx58ezFCh-wvqzk-SreYlsbnBlQHU5jY_MiFbcQFk_SuQbHNg2RhoC8TUQAvD_BwE&gclsrc=aw.ds" target="_blank">NIKE</a></li>
+                <li><a href="https://www.adidas.mx/originals-forum?=null&=null&=null&=null&=null&-_--_-ds_kid=43700065346232518-_-&-_-ds_agid=58700007280569164-_-&af_channel=Search&af_reengagement_window=30d&c=Originals-Forum-General-B-Exact&cm_mmc=AdieSEM_Google-_-Originals-Forum-General-B-Exact-_-General-Forum-X-General-_-adidas%20forum-_-&cm_mmc2=&cm_mmca1=MX&gad_source=1&gclid=CjwKCAjwnOipBhBQEiwACyGLuh1ZS3zsTLsqkLzjRjAWB4GN8sC2v5mkPuHPewRLZmZO2kan9QJfXBoCXigQAvD_BwE&gclsrc=aw.ds&is_retargeting=true&pid=googleadwords_temp" target="_blank">ADIDAS</a></li>
+                <li><a href="https://www.nike.com/mx/w/jordan-1-calzado-4fokyzy7ok?gad_source=1&gclid=CjwKCAjwnOipBhBQEiwACyGLuh3g537suFr4YzBJ-0Qrv1CAxsVQC47_maM0815qMZSd14SCAJjNlhoCcHoQAvD_BwE&gclsrc=aw.ds" target="_blank">JORDAN</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+            
+</body>
+</html>
